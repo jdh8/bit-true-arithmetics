@@ -1,2 +1,4 @@
-# bit-true-arithmetics
-Slides for @skymizer tech forum
+Bit-true arithmetics
+====================
+
+Slides for [Skymizer](https://skymizer.com/) tech forum
