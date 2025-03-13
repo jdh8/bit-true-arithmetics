@@ -1,4 +1,5 @@
 \documentclass{beamer}
+\usepackage[no-math]{fontspec}
 \usepackage{xeCJK}
 \hypersetup{colorlinks,linkcolor=}
 
@@ -51,6 +52,33 @@
             \href{https://commons.wikimedia.org/wiki/File:Comparison_rounding_graphs_SMIL.svg}{Wikimedia Commons}
         }
     \end{figure}
+\end{frame}
+
+\begin{frame}{Arithmetics}
+    Arithmetic results can be inexact in the target format.
+    
+    \begin{example}
+        Consider 0.1 + 0.2 in IEEE 754 binary64 format.
+
+        \begin{itemize}
+            \item 0.1 $\approx$ \texttt{0x1.999999999999ap-4}
+            \item 0.2 $\approx$ \texttt{0x1.999999999999ap-3}
+            \item 0.3 $\approx$ \texttt{0x1.3333333333333p-2}
+            \item \texttt{0x1.999999999999ap-4} + \texttt{0x1.999999999999ap-3}
+                \begin{itemize}
+                    \item[] = \texttt{0x1.3333333333334p-2}
+                    \item[] $\approx$ 0.30000000000000004
+                \end{itemize}
+        \end{itemize}
+    \end{example}
+\end{frame}
+
+\begin{frame}{Double rounding problem}
+    \begin{itemize}
+        \item Rounding is not associative!
+        \item 9.46 $\to$ 9
+        \item 9.46 $\to$ 9.5 $\to$ 10
+    \end{itemize}
 \end{frame}
 
 \end{document}
