@@ -14,66 +14,66 @@
 
 \section{Overview}
 \begin{frame}{Overview}
-\tableofcontents
+	\tableofcontents
 \end{frame}
 
 \begin{frame}{Why}
-    \begin{block}{\Huge``}
-        \vspace{-1em}
-        \begin{enumerate}
-            \item The need for an unambiguous specification of the most frequent functions
-            \item The only specification that makes sense is correct rounding
-            \item Now, correct rounding of many functions is feasible at a very reasonable cost
-        \end{enumerate}
+	\begin{block}{\Huge``}
+		\vspace{-1em}
+		\begin{enumerate}
+			\item The need for an unambiguous specification of the most frequent functions
+			\item The only specification that makes sense is correct rounding
+			\item Now, correct rounding of many functions is feasible at a very reasonable cost
+		\end{enumerate}
 
-        --- Nicolas Brisebarre, Guillaume Hanrot, Jean-Michel Muller, Paul Zimmermann.
-        \href
-            {https://hal.science/hal-04474530/document}
-            {Correctly-rounded evaluation of a function: why, how, and at what cost?}
-        2025.  hal-04474530v3
-    \end{block}
+		--- Nicolas Brisebarre, Guillaume Hanrot, Jean-Michel Muller, Paul Zimmermann.
+		\href
+		{https://hal.science/hal-04474530/document}
+		{Correctly-rounded evaluation of a function: why, how, and at what cost?}
+		2025.  hal-04474530v3
+	\end{block}
 \end{frame}
 
 \begin{frame}{Quantization}
-    \begin{itemize}
-        \item Quantization maps a large/continuous set to a small/countable set.
-        \item Quantization is required because we only have finite bits to store data.
-        \item Further quantization reduces space and probably time usage.
-    \end{itemize}
+	\begin{itemize}
+		\item Quantization maps a large/continuous set to a small/countable set.
+		\item Quantization is required because we only have finite bits to store data.
+		\item Further quantization reduces space and probably time usage.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Accuracy and precision}
-    \begin{figure}
-        \caption{
-            \href
-                {https://en.wikipedia.org/wiki/Accuracy_and_precision\#ISO_definition_(ISO_5725)}
-                {Accuracy according to BIPM and ISO 5725}
-        }
-        \begin{minipage}{0.4\textwidth}
-            \centering
-            \includegraphics[width=0.8\textwidth]{assets/High_accuracy_Low_precision.pdf} \\
-            Low accuracy due to low precision
-        \end{minipage}
-        \begin{minipage}{0.4\textwidth}
-            \centering
-            \includegraphics[width=0.8\textwidth]{assets/High_precision_Low_accuracy.pdf} \\
-            Low accuracy despite of high precision
-        \end{minipage}
-    \end{figure}
+	\begin{figure}
+		\caption{
+			\href
+			{https://en.wikipedia.org/wiki/Accuracy_and_precision\#ISO_definition_(ISO_5725)}
+			{Accuracy according to BIPM and ISO 5725}
+		}
+		\begin{minipage}{0.4\textwidth}
+			\centering
+			\includegraphics[width=0.8\textwidth]{assets/High_accuracy_Low_precision.pdf} \\
+			Low accuracy due to low precision
+		\end{minipage}
+		\begin{minipage}{0.4\textwidth}
+			\centering
+			\includegraphics[width=0.8\textwidth]{assets/High_precision_Low_accuracy.pdf} \\
+			Low accuracy despite of high precision
+		\end{minipage}
+	\end{figure}
 \end{frame}
 
 \begin{frame}{Rounding modes}
-    \begin{figure}
-        \href
-            {https://upload.wikimedia.org/wikipedia/commons/8/8a/Comparison_rounding_graphs_SMIL.svg}
-            {\includegraphics[height=0.625\textheight]{assets/Comparison_rounding_graphs_SMIL.pdf}}
+	\begin{figure}
+		\href
+		{https://upload.wikimedia.org/wikipedia/commons/8/8a/Comparison_rounding_graphs_SMIL.svg}
+		{\includegraphics[height=0.625\textheight]{assets/Comparison_rounding_graphs_SMIL.pdf}}
 
-        \caption{
-            \href{https://upload.wikimedia.org/wikipedia/commons/8/8a/Comparison_rounding_graphs_SMIL.svg}{Interactive graph}
-            by CMG Lee on
-            \href{https://commons.wikimedia.org/wiki/File:Comparison_rounding_graphs_SMIL.svg}{Wikimedia Commons}
-        }
-    \end{figure}
+		\caption{
+			\href{https://upload.wikimedia.org/wikipedia/commons/8/8a/Comparison_rounding_graphs_SMIL.svg}{Interactive graph}
+			by CMG Lee on
+			\href{https://commons.wikimedia.org/wiki/File:Comparison_rounding_graphs_SMIL.svg}{Wikimedia Commons}
+		}
+	\end{figure}
 \end{frame}
 
 \section{Algebraic functions}
@@ -81,30 +81,30 @@
 \end{frame}
 
 \begin{frame}{Arithmetics}
-    Arithmetic results can be inexact in the target format.
-    
-    \begin{example}
-        Consider 0.1 + 0.2 in IEEE 754 binary64 format.
+	Arithmetic results can be inexact in the target format.
 
-        \begin{itemize}
-            \item 0.1 $\approx$ \texttt{0x1.999999999999ap-4}
-            \item 0.2 $\approx$ \texttt{0x1.999999999999ap-3}
-            \item 0.3 $\approx$ \texttt{0x1.3333333333333p-2}
-            \item \texttt{0x1.999999999999ap-4} + \texttt{0x1.999999999999ap-3}
-                \begin{itemize}
-                    \item[] = \texttt{0x1.3333333333334p-2}
-                    \item[] $\approx$ 0.30000000000000004
-                \end{itemize}
-        \end{itemize}
-    \end{example}
+	\begin{example}
+		Consider 0.1 + 0.2 in IEEE 754 binary64 format.
+
+		\begin{itemize}
+			\item 0.1 $\approx$ \texttt{0x1.999999999999ap-4}
+			\item 0.2 $\approx$ \texttt{0x1.999999999999ap-3}
+			\item 0.3 $\approx$ \texttt{0x1.3333333333333p-2}
+			\item \texttt{0x1.999999999999ap-4} + \texttt{0x1.999999999999ap-3}
+			      \begin{itemize}
+				      \item[] = \texttt{0x1.3333333333334p-2}
+				      \item[] $\approx$ 0.30000000000000004
+			      \end{itemize}
+		\end{itemize}
+	\end{example}
 \end{frame}
 
 \begin{frame}{Double rounding problem}
-    \begin{itemize}
-        \item Rounding is not associative!
-        \item 9.46 $\to$ 9
-        \item 9.46 $\to$ 9.5 $\to$ 10
-    \end{itemize}
+	\begin{itemize}
+		\item Rounding is not associative!
+		\item 9.46 $\to$ 9
+		\item 9.46 $\to$ 9.5 $\to$ 10
+	\end{itemize}
 \end{frame}
 
 \section{Transcendental functions}
