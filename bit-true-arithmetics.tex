@@ -121,4 +121,25 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{\href{https://core-math.gitlabpages.inria.fr/}{CORE-MATH}}
+	\begin{itemize}
+		\item Correctly rounded in all \href{https://en.cppreference.com/w/c/numeric/fenv/FE_round}{C rounding modes}
+		\item Univariate binary32 (\texttt{float}) functions are exhaustively tested.
+		\item The rest are tested with known hard-to-round cases.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\href{https://github.com/jdh8/metallic-rs}{\texttt{metallic}}}
+	\begin{itemize}
+		\item My correctly rounded math library in Rust (WIP)
+		\item Correctly rounded in the default rounding mode
+		      \begin{itemize}
+			      \item Rounding half to even, the only rounding mode in most languages.
+			      \item Directed rounding in C/C++ is only guaranteed if
+			            \texttt{\#pragma STDC FENV\_ACCESS ON} is set.
+		      \end{itemize}
+		\item Usually faster than CORE-MATH
+	\end{itemize}
+\end{frame}
+
 \end{document}
