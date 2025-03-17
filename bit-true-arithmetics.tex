@@ -80,6 +80,19 @@
 
 \section{Algebraic functions}
 \begin{frame}{IEEE 754 binary formats}
+	\begin{example}
+		\begin{figure}
+			\includegraphics[width=0.8\textwidth]{assets/Float_example.pdf}
+			\[ 1.{\color{red}01}_2 \times 2^{{\color{green}124} - 127}  \]
+			\caption{Example normal binary32 by
+				\href{https://en.wikipedia.org/wiki/User:Fresheneesz}{Fresheneesz} on
+				\href{https://commons.wikimedia.org/wiki/File:Float_example.svg}{Wikipedia}}
+		\end{figure}
+		\begin{itemize}
+			\item (Exponent) bias defaults to $2^{E-1} - 1$.
+			\item Implicit bit (1) leads the significand/mantissa.
+		\end{itemize}
+	\end{example}
 \end{frame}
 
 \begin{frame}{Arithmetics}
