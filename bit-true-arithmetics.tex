@@ -2,6 +2,7 @@
 % !TEX encoding = UTF-8 Unicode
 \documentclass{beamer}
 \usepackage[no-math]{fontspec}
+\usepackage{siunitx}
 \usepackage{xeCJK}
 \hypersetup{colorlinks,linkcolor=}
 
@@ -176,7 +177,7 @@
 		\[
 			\operatorname\square_{\text{odd}} x =
 			\begin{cases}
-				x,                               & \text{if } x \text{ has exact representation}            \\
+				x,                               & \text{if } x \text{ has exact representation}          \\
 				\operatorname\bigtriangleup x,   & \text{if} \operatorname\bigtriangleup x \text{ is odd} \\
 				\operatorname\bigtriangledown x, & \text{otherwise}
 			\end{cases}
@@ -257,36 +258,41 @@
 	\end{description}
 \end{frame}
 
-\begin{frame}{Precision requirement}
-	The precision requirement for multiplication is as follows:
-
-	\begin{align*}
-		M_{\text{big}} + 1 &\ge 2 \left( M_{\text{small}} + 1 \right) \\
-		M_{\text{big}} + 2 &> 2 \left( M_{\text{small}} + 1 \right) \\
-		M_{\text{big}} &> 2M_{\text{small}}
-	\end{align*}
-
-	This requirement also works for addition with rounding to nearest.
-\end{frame}
-
 \begin{frame}{Bit-true multiplication}
 	Multiplication is bit-true if the product is exact in the intermediate format.
 	\begin{itemize}
 		\item The exponent range covers all possible products.
-		\item $M_{\text{big}} > 2M_{\text{small}}$
+		\item $M_{\text{big}} \ge 2M_{\text{small}} + 1$
 	\end{itemize}
 
 	\begin{example}
 		\begin{align*}
-			x &= 1.\text{xxx}_2 \\
-			y &= 1.\text{yyy}_2 \\
-			xy &=
+			x  & = 1.\text{xxx}_2 \\
+			y  & = 1.\text{yyy}_2 \\
+			xy & =
 			\begin{cases}
-				1.\text{zzzzzz}_2, & \text{if } xy < 2 \\
+				1.\text{zzzzzz}_2,          & \text{if } xy < 2   \\
 				1\text{z}.\text{zzzzzz}_2 , & \text{if } xy \ge 2 \\
 			\end{cases}
 		\end{align*}
 	\end{example}
+\end{frame}
+
+\begin{frame}{Bit-true addition}
+	\begin{itemize}
+		\item The exponent range covers all possible products.
+		\item $M_{\text{big}} \ge 2M_{\text{small}} + 2$
+	\end{itemize}
+
+	\begin{figure}
+		\begin{tabular}{l S[table-format=2.8]}
+			  & 1.111      \\
+			+ & 0.00001111 \\
+			\hline
+			  & 1.11101111
+		\end{tabular}
+		\caption{Worst case of disjoint addition}
+	\end{figure}
 \end{frame}
 
 \begin{frame}{Exhaustive bit-true verification}
