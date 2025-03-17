@@ -53,12 +53,16 @@
 		}
 		\begin{minipage}{0.4\textwidth}
 			\centering
-			\includegraphics[width=0.8\textwidth]{assets/High_accuracy_Low_precision.pdf} \\
+			\href
+			{https://upload.wikimedia.org/wikipedia/commons/1/10/High_accuracy_Low_precision.svg}
+			{\includegraphics[width=0.8\textwidth]{assets/High_accuracy_Low_precision.pdf}} \\
 			Low accuracy due to low precision
 		\end{minipage}
 		\begin{minipage}{0.4\textwidth}
 			\centering
-			\includegraphics[width=0.8\textwidth]{assets/High_precision_Low_accuracy.pdf} \\
+			\href
+			{https://upload.wikimedia.org/wikipedia/commons/3/3a/High_precision_Low_accuracy.svg}
+			{\includegraphics[width=0.8\textwidth]{assets/High_precision_Low_accuracy.pdf}} \\
 			Low accuracy despite of high precision
 		\end{minipage}
 	\end{figure}
@@ -82,14 +86,17 @@
 \begin{frame}{IEEE 754 binary formats}
 	\begin{example}
 		\begin{figure}
-			\includegraphics[width=0.8\textwidth]{assets/Float_example.pdf}
+			\href
+			{https://upload.wikimedia.org/wikipedia/commons/d/d2/Float_example.svg}
+			{\includegraphics[width=0.8\textwidth]{assets/Float_example.pdf}}
 			\[ 1.{\color{red}01}_2 \times 2^{{\color{green}124} - 127}  \]
 			\begin{center}
 				\ttfamily 0x1.{\color{red}4}p{\color{green}-3}
 			\end{center}
 			\caption{Example normal binary32 by
 				\href{https://en.wikipedia.org/wiki/User:Fresheneesz}{Fresheneesz} on
-				\href{https://commons.wikimedia.org/wiki/File:Float_example.svg}{Wikipedia}}
+				\href{https://commons.wikimedia.org/wiki/File:Float_example.svg}{English Wikipedia}
+			}
 		\end{figure}
 		\begin{itemize}
 			\item (Exponent) bias defaults to $2^{E-1} - 1$.
@@ -101,9 +108,9 @@
 \begin{frame}{Floating-point classification}
 	\begin{equation*}
 		\begin{cases}
-			\text{Infinity | NaN}, & \text{if exponent} = 2^E - 1 \\
-			\text{Subnormal | zero}, & \text{if exponent} = 0 \\
-			\text{Normal}, & \text{otherwise}
+			\text{Infinity | NaN},   & \text{if exponent} = 2^E - 1 \\
+			\text{Subnormal | zero}, & \text{if exponent} = 0       \\
+			\text{Normal},           & \text{otherwise}
 		\end{cases}
 	\end{equation*}
 \end{frame}
@@ -143,7 +150,7 @@
 			\item 0.3 $\approx$ \texttt{0x1.3333333333333p-2}
 		\end{itemize}
 		\begin{align*}
-			& \textup{binary64}(0.1) + \textup{binary64}(0.2)
+			 & \text{binary64}(0.1) + \text{binary64}(0.2)
 			\\ ={}& \texttt{0x1.3333333333333{\color{red}c}p-2}
 			\\ \approx{}& \texttt{0x1.3333333333334p-2}
 			\\ \approx{}& 0.30000000000000004
