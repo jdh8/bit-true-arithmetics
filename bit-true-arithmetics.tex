@@ -224,6 +224,32 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Emulating minifloat operations}
+	Consider emulating minifloat operations with native floating-point operations.
+
+	\begin{itemize}
+		\item Native operations are fast.
+		\item Reusing conversion between minifloats and native floats improves
+		      robustness by reducing code size.
+		\item Such emulation is usually \textbf{bit-true}, assuming that the
+		      rounding mode agrees in both types.  Native floats are usually at
+		      least twice as wide as minifloats, which practically eliminates
+		      the double rounding problem.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Common floating-point formats}
+	Significand/mantissa grows faster than exponent.
+
+	\begin{description}
+		\item[binary64] E11M52
+		\item[binary32] E8M23
+		\item[binary16] E5M10
+		\item[bfloat16] E8M7
+		\item[float8] E\{\texttt{3\href{https://doc.rust-lang.org/std/ops/struct.RangeInclusive.html}{..=}5}\}M\{\texttt{2..=4}\}
+	\end{description}
+\end{frame}
+
 \section{Transcendental functions}
 \begin{frame}{Table maker's dilemma}
 	\begin{itemize}
