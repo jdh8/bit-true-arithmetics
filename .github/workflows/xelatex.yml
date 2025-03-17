@@ -22,3 +22,4 @@ jobs:
         with:
           name: PDF
           path: bit-true-arithmetics.pdf
+          compression-level: 9
