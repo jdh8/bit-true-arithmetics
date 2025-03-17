@@ -83,6 +83,7 @@
 \end{frame}
 
 \section{Algebraic functions}
+\subsection{Floating-point format}
 \begin{frame}{IEEE 754 binary formats}
 	\begin{example}
 		\begin{figure}
@@ -138,6 +139,7 @@
 	What is \texttt{std::bit\_cast<float>(0x40000000)}?
 \end{frame}
 
+\subsection{Rounding}
 \begin{frame}{Arithmetics}
 	Arithmetic results can be inexact in the target format.
 
@@ -205,6 +207,21 @@
 		[Research Report] LIP RR-2004-48, Laboratoire de l'informatique du parallélisme.
 		2004, 2+7p.  hal-02101979
 	\end{exampleblock}
+\end{frame}
+
+\subsection{Minifloats}
+\begin{frame}{Minifloats}
+	\begin{itemize}
+		\item Minifloats are floating-point values represented with very few bits.
+		\item Minifloats are usually special-purpose and tailored to their use cases.
+		\item To save precious bit patterns, especially with its width within 8
+		      bits, a minifloat format may
+		      \begin{itemize}
+			      \item Reserve fewer representations for infinities and NaNs.
+			      \item Rebrand ``$-0$'' as NaN.
+			      \item Use a non-default exponent bias for its use case.
+		      \end{itemize}
+	\end{itemize}
 \end{frame}
 
 \section{Transcendental functions}
