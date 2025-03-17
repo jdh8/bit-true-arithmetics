@@ -98,6 +98,39 @@
 	\end{example}
 \end{frame}
 
+\begin{frame}{Floating-point classification}
+	\begin{equation*}
+		\begin{cases}
+			\text{Infinity | NaN}, & \text{if exponent} = 2^E - 1 \\
+			\text{Subnormal | zero}, & \text{if exponent} = 0 \\
+			\text{Normal}, & \text{otherwise}
+		\end{cases}
+	\end{equation*}
+\end{frame}
+
+\begin{frame}{Subnormal numbers}
+	When the stored exponent is 0,
+	\begin{itemize}
+		\item The exponent is deemed as 1.
+		\item Instead, the implicit bit becomes 0.
+	\end{itemize}
+
+	\begin{figure}
+		\href
+		{https://upload.wikimedia.org/wikipedia/commons/6/69/Denormalized_numbers_on_a_line.svg}
+		{\includegraphics[width=0.8\textwidth]{assets/Denormalized_numbers_on_a_line.pdf}}
+
+		\caption{Seamless transition from 0 to normal numbers by
+			\href{https://en.wikipedia.org/wiki/User:Blacklemon67}{Blacklemon67} on
+			\href{https://commons.wikimedia.org/wiki/File:Denormalized_numbers_on_a_line.svg}{English Wikipedia}
+		}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Quiz}
+	What is \texttt{std::bit\_cast<float>(0x40000000)}?
+\end{frame}
+
 \begin{frame}{Arithmetics}
 	Arithmetic results can be inexact in the target format.
 
