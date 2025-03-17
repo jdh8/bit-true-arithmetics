@@ -106,13 +106,13 @@
 \end{frame}
 
 \begin{frame}{Floating-point classification}
-	\begin{equation*}
+	\[
 		\begin{cases}
 			\text{Infinity | NaN},   & \text{if exponent} = 2^E - 1 \\
 			\text{Subnormal | zero}, & \text{if exponent} = 0       \\
 			\text{Normal},           & \text{otherwise}
 		\end{cases}
-	\end{equation*}
+	\]
 \end{frame}
 
 \begin{frame}{Subnormal numbers}
@@ -164,6 +164,47 @@
 		\item 9.46 $\to$ 9
 		\item 9.46 $\to$ 9.5 $\to$ 10
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{\href
+		{https://hal-lara.archives-ouvertes.fr/hal-02101979/document}
+		{When double rounding is odd}
+	}
+	\begin{block}{Odd rounding}
+		\[
+			\operatorname\square_{\text{odd}} x =
+			\begin{cases}
+				x,                               & \text{if } x \text{ has exact representation}            \\
+				\operatorname\bigtriangleup x,   & \textup{if} \operatorname\bigtriangleup x \text{ is odd} \\
+				\operatorname\bigtriangledown x, & \text{otherwise}
+			\end{cases}
+		\]
+	\end{block}
+
+	\begin{block}{Correct double rounding algorithm}
+		Given a binary format with precision of $p$ bits and an extended binary
+		format of $p + k$ bits,
+		\[
+			\operatorname\circ^p \operatorname\square_{\textup{odd}}^{p + k} x = \operatorname\circ^p x
+		\]
+		when $p \ge 2$, $k \ge 2$, and the result does not over- or underflow.
+	\end{block}
+\end{frame}
+
+\begin{frame}{When double rounding is odd, example}
+	\begin{exampleblock}{\Huge``}
+		\vspace{-1em}
+		\begin{figure}
+			\includegraphics[width=0.8\textwidth]{assets/RR2004-48-Fig-4.pdf}
+		\end{figure}
+
+		--- Sylvie Boldo, Guillaume Melquiond.
+		\href
+		{https://hal-lara.archives-ouvertes.fr/hal-02101979/document}
+		{When double rounding is odd}.
+		[Research Report] LIP RR-2004-48, Laboratoire de l'informatique du parallélisme.
+		2004, 2+7p.  hal-02101979
+	\end{exampleblock}
 \end{frame}
 
 \section{Transcendental functions}
