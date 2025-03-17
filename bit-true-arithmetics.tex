@@ -177,7 +177,7 @@
 			\operatorname\square_{\text{odd}} x =
 			\begin{cases}
 				x,                               & \text{if } x \text{ has exact representation}            \\
-				\operatorname\bigtriangleup x,   & \textup{if} \operatorname\bigtriangleup x \text{ is odd} \\
+				\operatorname\bigtriangleup x,   & \text{if} \operatorname\bigtriangleup x \text{ is odd} \\
 				\operatorname\bigtriangledown x, & \text{otherwise}
 			\end{cases}
 		\]
@@ -187,7 +187,7 @@
 		Given a binary format with precision of $p$ bits and an extended binary
 		format of $p + k$ bits,
 		\[
-			\operatorname\circ^p \operatorname\square_{\textup{odd}}^{p + k} x = \operatorname\circ^p x
+			\operatorname\circ^p \operatorname\square_{\text{odd}}^{p + k} x = \operatorname\circ^p x
 		\]
 		when $p \ge 2$, $k \ge 2$, and the result does not over- or underflow.
 	\end{block}
@@ -248,6 +248,38 @@
 		\item[bfloat16] E8M7
 		\item[float8] E\{\texttt{3\href{https://doc.rust-lang.org/std/ops/struct.RangeInclusive.html}{..=}5}\}M\{\texttt{2..=4}\}
 	\end{description}
+\end{frame}
+
+\begin{frame}{Precision requirement}
+	The precision requirement for multiplication is as follows:
+
+	\begin{align*}
+		M_{\text{big}} + 1 &\ge 2 \left( M_{\text{small}} + 1 \right) \\
+		M_{\text{big}} + 2 &> 2 \left( M_{\text{small}} + 1 \right) \\
+		M_{\text{big}} &> 2M_{\text{small}}
+	\end{align*}
+
+	This requirement also works for addition with rounding to nearest.
+\end{frame}
+
+\begin{frame}{Bit-true multiplication}
+	Multiplication is bit-true if the product is exact in the intermediate format.
+	\begin{itemize}
+		\item The exponent range covers all possible products.
+		\item $M_{\text{big}} > 2M_{\text{small}}$
+	\end{itemize}
+
+	\begin{example}
+		\begin{align*}
+			x &= 1.\text{xxx}_2 \\
+			y &= 1.\text{yyy}_2 \\
+			xy &=
+			\begin{cases}
+				1.\text{zzzzzz}_2, & \text{if } xy < 2 \\
+				1\text{z}.\text{zzzzzz}_2 , & \text{if } xy \ge 2 \\
+			\end{cases}
+		\end{align*}
+	\end{example}
 \end{frame}
 
 \begin{frame}{Exhaustive bit-true verification}
