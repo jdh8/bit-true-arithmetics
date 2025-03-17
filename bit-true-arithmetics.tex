@@ -84,6 +84,9 @@
 		\begin{figure}
 			\includegraphics[width=0.8\textwidth]{assets/Float_example.pdf}
 			\[ 1.{\color{red}01}_2 \times 2^{{\color{green}124} - 127}  \]
+			\begin{center}
+				\ttfamily 0x1.{\color{red}4}p{\color{green}-3}
+			\end{center}
 			\caption{Example normal binary32 by
 				\href{https://en.wikipedia.org/wiki/User:Fresheneesz}{Fresheneesz} on
 				\href{https://commons.wikimedia.org/wiki/File:Float_example.svg}{Wikipedia}}
@@ -102,15 +105,16 @@
 		Consider 0.1 + 0.2 in IEEE 754 binary64 format.
 
 		\begin{itemize}
-			\item 0.1 $\approx$ \texttt{0x1.999999999999ap-4}
-			\item 0.2 $\approx$ \texttt{0x1.999999999999ap-3}
+			\item 0.1 $\approx$ \texttt{0x1.999999999999ap-4} = \texttt{0x0.6666666666666{\color{red}4}p-2}
+			\item 0.2 $\approx$ \texttt{0x1.999999999999ap-3} = \texttt{0x0.ccccccccccccc{\color{red}8}p-2}
 			\item 0.3 $\approx$ \texttt{0x1.3333333333333p-2}
-			\item \texttt{0x1.999999999999ap-4} + \texttt{0x1.999999999999ap-3}
-			      \begin{itemize}
-				      \item[] = \texttt{0x1.3333333333334p-2}
-				      \item[] $\approx$ 0.30000000000000004
-			      \end{itemize}
 		\end{itemize}
+		\begin{align*}
+			& \textup{binary64}(0.1) + \textup{binary64}(0.2)
+			\\ ={}& \texttt{0x1.3333333333333{\color{red}c}p-2}
+			\\ \approx{}& \texttt{0x1.3333333333334p-2}
+			\\ \approx{}& 0.30000000000000004
+		\end{align*}
 	\end{example}
 \end{frame}
 
